@@ -15,7 +15,7 @@ console.log('What is the obj', task);
             <div>
                 <p>{task.task_details}</p>
             </div>
-            <button>Complete</button>
+            <button >Complete</button>
             <button>Delete</button>
             </div>
         </div>

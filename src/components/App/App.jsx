@@ -21,11 +21,28 @@ function getTasks() {
     })
 }
 
+function taskCompleted(id){
+  return fetch(`/todo/${id}`, {
+    method: 'PUT'
+  })
+  .then((response) => {
+    console.log(response);
+    getTasks().then(item => setTaskList(item));
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}//e
+
 useEffect(() => {
     console.log('Fetching tasks!');
     getTasks().then(task => setTaskList(task));
     console.log('tyler here',taskList)
 }, []);
+
+
+
+
   return (
     <div>
       <h1>TO DO APP</h1>
@@ -33,7 +50,6 @@ useEffect(() => {
       {taskList.map(task => (
         <NewTaskContainer key={task.id} task={task}  />
       ))}
-      
     </div>
     
   );
