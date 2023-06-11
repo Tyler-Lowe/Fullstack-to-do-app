@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // do a post here with form data this post should call the newtaskcontainer function that will do a get request and populate todo item
 
-export default function TaskCreator() {
+export default function TaskCreator( {getTasks, setTaskList}) {
     const [taskName, setTaskName] = useState("");
     const [taskDetails, setTaskDetails] = useState("");
    
@@ -20,7 +20,7 @@ export default function TaskCreator() {
         event.preventDefault();
     
         addTask({ taskName: taskName, taskDetails: taskDetails}).then(() => {
-            console.log('Are we here?');
+            getTasks().then(setTaskList);
         })
 
         setTaskName('');

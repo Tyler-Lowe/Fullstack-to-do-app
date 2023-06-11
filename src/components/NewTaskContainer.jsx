@@ -4,37 +4,20 @@ import { useState, useEffect } from 'react';
 
 // Need to pass values through for complete and delete??
 
-export default function NewTaskContainer() {
-    const [taskList, setTaskList] = useState([]);
-// Do a get here using form data to create visual tasks
-// 
-// 
-function getTasks() {
-    return fetch('/todo')
-    .then(response => response.json())
-    .catch((error) => {
-        console.log(error);
-    })
-}
+export default function NewTaskContainer(  {task} ) {
 
-useEffect(() => {
-    console.log('Fetching tasks!');
-    getTasks().then(task => setTaskList(task));
-    console.log('tyler here',taskList)
-}, []);
-
+console.log('What is the obj', task);
     return (
 
-        <div>
-            <ul>
-
-            </ul>
-            <h2>Task Name</h2>
+        <div className="task-container" key={task.id}>
+            <div className="task-card">
+            <p>{task.task_name}</p>
             <div>
-                <p>Task Details</p>
+                <p>{task.task_details}</p>
             </div>
             <button>Complete</button>
             <button>Delete</button>
+            </div>
         </div>
     )
 }
