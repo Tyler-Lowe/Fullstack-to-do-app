@@ -14,7 +14,7 @@ function App () {
 // 
 // 
 function getTasks() {
-    return fetch('/todo')
+    return fetch('/todo/')
     .then(response => response.json())
     .catch((error) => {
         console.log(error);
@@ -23,7 +23,8 @@ function getTasks() {
 
 function taskCompleted(id){
   return fetch(`/todo/${id}`, {
-    method: 'PUT'
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'}
   })
   .then((response) => {
     console.log(response);
@@ -32,7 +33,20 @@ function taskCompleted(id){
   .catch((error) => {
     console.error(error);
   });
-}//e
+}
+
+function deleteTask(id){
+  return fetch(`/todo/${id}`, {
+    method: 'DELETE'
+  })
+  .then((response) => {
+    console.log(response);
+    getTasks().then(item => setTaskList(item));
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}
 
 useEffect(() => {
     console.log('Fetching tasks!');
@@ -48,7 +62,7 @@ useEffect(() => {
       <h1>TO DO APP</h1>
       <TaskCreator taskList={taskList} getTasks={getTasks} setTaskList={setTaskList}/>
       {taskList.map(task => (
-        <NewTaskContainer key={task.id} task={task}  />
+        <NewTaskContainer key={task.id} task={task} taskCompleted={taskCompleted} deleteTask={deleteTask} />
       ))}
     </div>
     

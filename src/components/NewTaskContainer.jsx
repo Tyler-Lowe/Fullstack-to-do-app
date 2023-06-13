@@ -4,19 +4,19 @@ import { useState, useEffect } from 'react';
 
 // Need to pass values through for complete and delete??
 
-export default function NewTaskContainer(  {task} ) {
+export default function NewTaskContainer( {task, taskCompleted, deleteTask} ) {
 
-console.log('What is the obj', task);
+console.log('What is the obj', task.task_completed);
     return (
 
         <div className="task-container" key={task.id}>
-            <div className="task-card">
-            <p>{task.task_name}</p>
+            <div className={task.task_completed ? "completed task-card" : "task-card"}>
+            <h2>{task.task_name}</h2>
             <div>
                 <p>{task.task_details}</p>
             </div>
-            <button >Complete</button>
-            <button>Delete</button>
+            <button onClick={() => taskCompleted(task.id)}>Complete</button>
+            <button onClick={() => deleteTask(task.id)}>Delete</button>
             </div>
         </div>
     )

@@ -40,13 +40,15 @@ router.post('/', (req, res) => {
 // PUT
 
 router.put('/:id', (req, res) => {
-    let updatedTask = req.body;
-    console.log('Updated Task', req);
-    let taskID = req.params.id;
+    let updatedTask = req.params.id;
+    console.log('Show me the light',updatedTask);
+    // console.log('Updated Task', updatedTask);
+    // let taskID = req.params.id;
+    // console.log('Here is the taskID',taskID);
     let queryText = `
-    UPDATE "to_do_list" SET "task_completed"='true' WHERE id=$1;
+    UPDATE to_do_list SET task_completed = NOT task_completed WHERE id = $1;
     `;
-    pool.query(queryText, [updatedTask.taskID])
+    pool.query(queryText, [updatedTask])
     .then(() => {
         res.sendStatus(204)
     })
@@ -58,5 +60,21 @@ router.put('/:id', (req, res) => {
 
 
 // DELETE
+
+router.delete('/:id', (req, res) => {// used id to get the id in the table in postico
+    let itemId = req.params.id;//to get the parameter of each id
+    let queryDelete = `
+    DELETE FROM "to_do_list" WHERE id = $1;
+    `;//deletes
+    pool.query(queryDelete, [itemId])
+    .then(() => {
+        res.sendStatus(204)
+    })
+    .catch((error) => {
+        console.error(error);
+        res.sendStatus(500);
+    })
+})//DELETES ends
+
 
 module.exports = router;

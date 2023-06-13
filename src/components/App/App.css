@@ -24,12 +24,57 @@
 
 .task-container {
   display: flex;
-  border: 1px solid red;
   width: 25%;
   margin: 0 auto;
   margin: 1rem auto; 
-}
+  text-align: center;
+  justify-content: center;}
 
 .task-card {
-  flex-shrink: 1;
+  padding: 1.5rem;
+  background-color: rgb(209, 209, 209);
+  border-radius: 15px;
+  min-width: 25rem;
+  max-width: 25rem;
+
+}
+
+.completed {
+  text-decoration:line-through;
+  background-color: darkgray;
+}
+
+button{
+  padding: .5rem;
+  margin: .25rem;
+  border-radius: 15px;
+  width: 5rem;
+}
+
+button:hover {
+  background-color: rgb(188, 249, 249);
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+form > input {
+  border-radius: 5px;
+  padding: .25rem;
+  margin: .25rem;
+}
+
+form > input:nth-child(3){
+  cursor: pointer;
+  padding: .5rem;
+}
+
+h1 {
+  text-align: center;
 }
