@@ -1,4 +1,8 @@
 import React from "react";
+import Button from '@mui/material/Button';
+import Grid  from "@mui/material";
+import ButtonGroup from "@mui/material/ButtonGroup";
+
 import { useState, useEffect } from 'react';
 
 
@@ -15,8 +19,10 @@ console.log('What is the obj', task.task_completed);
             <div>
                 <p>{task.task_details}</p>
             </div>
-            <button onClick={() => taskCompleted(task.id)}>Complete</button>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <ButtonGroup variant="text" aria-label="text button group">
+            <Button  onClick={() => taskCompleted(task.id)}>Complete</Button>
+            <Button  onClick={() => deleteTask(task.id)}>Delete</Button>
+            </ButtonGroup>
             </div>
         </div>
     )

@@ -36,7 +36,6 @@
   border-radius: 15px;
   min-width: 25rem;
   max-width: 25rem;
-
 }
 
 .completed {
@@ -44,12 +43,12 @@
   background-color: darkgray;
 }
 
-button{
+/* button{
   padding: .5rem;
   margin: .25rem;
   border-radius: 15px;
   width: 5rem;
-}
+} */
 
 button:hover {
   background-color: rgb(188, 249, 249);

@@ -1,4 +1,5 @@
 import React from "react";
+import  TextField  from "@mui/material/TextField";
 import { useState } from 'react';
 
 // do a post here with form data this post should call the newtaskcontainer function that will do a get request and populate todo item
@@ -47,8 +48,8 @@ export default function TaskCreator( {getTasks, setTaskList}) {
 
     return (
 <form onSubmit={handleSubmit}>
-    <input value={taskName} type="text" placeholder="Task Name" onChange={updateTask} />
-    <input value={taskDetails} type="text" placeholder="Task Details" onChange={updateTaskDetails} />
+    <TextField variant="outlined" value={taskName} type="text" placeholder="Task Name" onChange={updateTask} />
+    <TextField  variant="outlined" value={taskDetails} type="text" placeholder="Task Details" onChange={updateTaskDetails} />
     <input  type="submit" value="Submit" />
     {/* are we seen? */}
 </form>
