@@ -62,16 +62,16 @@ form {
   margin: 0 auto;
   justify-content: center;
 }
-
+/* 
 form > input {
   border-radius: 5px;
   padding: .25rem;
   margin: .25rem;
-}
+} */
 
 form > input:nth-child(3){
   cursor: pointer;
-  padding: .5rem;
+
 }
 
 h1 {
